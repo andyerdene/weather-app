@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const [cities, setCities] = useState([]);
@@ -14,7 +14,11 @@ export default function Home() {
     incomeCities = incomeCities.flat();
     setCities(incomeCities);
   }
-  getData();
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   const searchHandler = (e) => {
     const search = e.target.value;
     const filtered = cities.filter((city) => {
@@ -35,7 +39,9 @@ export default function Home() {
       </div>
       {/* <LeftSide />
       <RightSide /> */}
-      {/* <div className="absolute">middle circle</div> */}
+      <div className="absolute border-2 border-muted-foreground/20 rounded-full h-[100px] w-[100px]">
+        middle circle
+      </div>
     </div>
   );
 }
